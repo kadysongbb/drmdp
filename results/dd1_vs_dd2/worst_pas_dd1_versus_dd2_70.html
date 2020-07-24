@@ -13129,7 +13129,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
@@ -13224,7 +13224,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
@@ -13415,7 +13415,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
@@ -13462,7 +13462,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -13514,6 +13514,31 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Using license file /Users/kady/gurobi.lic
+Academic license - for non-commercial use only
+1463.0
+[10.  1.]
+1069881.0
+[6. 1.]
+12.0
+[10.  1.]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13524,7 +13549,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[226]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -13543,11 +13568,10 @@ div#notebook {
     <span class="n">yvt</span> <span class="o">=</span> <span class="n">action</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">yTt</span> <span class="o">=</span> <span class="n">action</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">beta_t</span> <span class="o">=</span> <span class="n">xit</span><span class="o">/</span><span class="n">N</span>
-    <span class="n">alpha_t</span> <span class="o">=</span> <span class="n">yTt</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">M</span><span class="p">)</span>
+    <span class="n">alpha_t</span> <span class="o">=</span> <span class="p">(</span><span class="n">yTt</span><span class="o">/</span><span class="n">M</span><span class="p">)</span><span class="o">*</span><span class="mf">0.6</span>
     <span class="n">phi_t</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha_t</span><span class="p">)</span><span class="o">*</span><span class="n">mu</span><span class="o">*</span><span class="n">beta_t</span><span class="o">*</span><span class="n">tau</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">phi_t</span>
     
-
 <span class="k">def</span> <span class="nf">get_tilde_pas</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">trans_reduc_types</span><span class="p">,</span> <span class="n">discretize</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
     <span class="c1"># given a state, an action, return estimate of P(*|a,s)</span>
     <span class="n">N</span> <span class="o">=</span> <span class="n">population_size</span>
@@ -13573,8 +13597,7 @@ div#notebook {
                     <span class="n">pas_matrix</span><span class="p">[</span><span class="n">s0</span><span class="p">][</span><span class="n">s1</span><span class="p">]</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">s1</span><span class="o">*</span><span class="n">dicretize_level</span><span class="p">,</span> <span class="n">xst</span> <span class="o">-</span> <span class="n">yvt</span><span class="p">,</span> <span class="n">phi_t</span><span class="p">)</span>
         <span class="n">pas</span> <span class="o">=</span> <span class="n">pas_matrix</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
         <span class="n">pas</span> <span class="o">=</span> <span class="n">pas</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pas</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">pas</span>
-        
+    <span class="k">return</span> <span class="n">pas</span>  
 
 <span class="k">def</span> <span class="nf">get_tilde_ras</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">trans_reduc_types</span><span class="p">,</span> 
                <span class="n">cT_multiplier</span><span class="p">,</span> <span class="n">wtp</span><span class="p">,</span> <span class="n">cost_per_infect</span><span class="p">,</span> <span class="n">qaly_loss_per_infect</span><span class="p">,</span> <span class="n">vaccine_price</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
@@ -13588,7 +13611,7 @@ div#notebook {
     <span class="n">phi_t</span> <span class="o">=</span> <span class="n">get_phi</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
     <span class="n">E_it</span> <span class="o">=</span> <span class="p">(</span><span class="n">xst</span> <span class="o">-</span> <span class="n">yvt</span><span class="p">)</span><span class="o">*</span><span class="n">phi_t</span>
     <span class="c1"># cost of implementing transmission reducing method </span>
-    <span class="n">c_T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">cT_multiplier</span>
+    <span class="n">c_T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">cT_multiplier</span>
     <span class="c1"># policy maker WTP for health  </span>
     <span class="n">lam</span> <span class="o">=</span> <span class="n">wtp</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">cost_per_infect</span>
@@ -13596,6 +13619,21 @@ div#notebook {
     <span class="n">p</span> <span class="o">=</span> <span class="n">vaccine_price</span>
     <span class="n">r</span> <span class="o">=</span> <span class="o">-</span><span class="n">lam</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">E_it</span> <span class="o">-</span> <span class="n">c</span><span class="o">*</span><span class="n">E_it</span> <span class="o">-</span> <span class="n">c_T</span><span class="p">[</span><span class="n">yTt</span><span class="p">]</span> <span class="o">-</span> <span class="n">p</span><span class="o">*</span><span class="n">yvt</span>
     <span class="k">return</span> <span class="n">r</span>
+
+<span class="k">def</span> <span class="nf">compute_actual_cost</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">trans_reduc_types</span><span class="p">,</span> <span class="n">cT_multiplier</span><span class="p">,</span> <span class="n">wtp</span><span class="p">,</span> <span class="n">cost_per_infect</span><span class="p">,</span> <span class="n">qaly_loss_per_infect</span><span class="p">,</span> <span class="n">vaccine_price</span><span class="p">):</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">trans_reduc_types</span>
+    <span class="n">i_t</span> <span class="o">=</span> <span class="n">next_state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">yvt</span> <span class="o">=</span> <span class="n">action</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">yTt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">action</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1"># cost of implementing transmission reducing method </span>
+    <span class="n">c_T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">cT_multiplier</span>
+    <span class="c1"># policy maker WTP for health  </span>
+    <span class="n">lam</span> <span class="o">=</span> <span class="n">wtp</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">cost_per_infect</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">qaly_loss_per_infect</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">vaccine_price</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="o">-</span><span class="n">lam</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">i_t</span> <span class="o">-</span> <span class="n">c</span><span class="o">*</span><span class="n">i_t</span> <span class="o">-</span> <span class="n">c_T</span><span class="p">[</span><span class="n">yTt</span><span class="p">]</span> <span class="o">-</span> <span class="n">p</span><span class="o">*</span><span class="n">yvt</span>
+    <span class="k">return</span> <span class="n">cost</span>
 
 <span class="k">def</span> <span class="nf">get_bar_pas_coefficients</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">trans_reduc_types</span><span class="p">,</span> <span class="n">discretize</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">discretized_N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vaccine_limit</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
     <span class="n">N</span> <span class="o">=</span> <span class="n">population_size</span>
@@ -13635,53 +13673,28 @@ div#notebook {
             <span class="n">pas</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">rho_s</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">action</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">pas</span>
 
-<span class="c1"># shuffle 10 largest values</span>
-<span class="k">def</span> <span class="nf">get_far_from_bar_pas</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">act_dim</span><span class="p">,</span> <span class="n">rho_0_s</span><span class="p">,</span> <span class="n">rho_s</span><span class="p">,</span> <span class="n">discretize</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">discretized_N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
-    <span class="n">bar_pas</span> <span class="o">=</span> <span class="n">get_bar_pas</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">act_dim</span><span class="p">,</span> <span class="n">rho_0_s</span><span class="p">,</span> <span class="n">rho_s</span><span class="p">,</span> <span class="n">discretize</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">)</span>
-    <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span><span class="n">bar_pas</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
-    <span class="n">largest_10_values</span> <span class="o">=</span> <span class="n">bar_pas</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">largest_10_values</span><span class="p">)</span>
-    <span class="n">far_from_bar_pas</span> <span class="o">=</span> <span class="n">bar_pas</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">far_from_bar_pas</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">largest_10_values</span>
-    <span class="k">return</span> <span class="n">far_from_bar_pas</span>
-
-<span class="c1"># exchange first largest value with second largest value</span>
-<span class="k">def</span> <span class="nf">get_far2_from_bar_pas</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">act_dim</span><span class="p">,</span> <span class="n">rho_0_s</span><span class="p">,</span> <span class="n">rho_s</span><span class="p">,</span> <span class="n">discretize</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">discretized_N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
-    <span class="n">bar_pas</span> <span class="o">=</span> <span class="n">get_bar_pas</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">act_dim</span><span class="p">,</span> <span class="n">rho_0_s</span><span class="p">,</span> <span class="n">rho_s</span><span class="p">,</span> <span class="n">discretize</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">)</span>
-    <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span><span class="n">bar_pas</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
-    <span class="n">largest_2_values</span> <span class="o">=</span> <span class="n">bar_pas</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">largest_2_values_copy</span> <span class="o">=</span> <span class="n">largest_2_values</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">largest_2_values_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">largest_2_values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">largest_2_values_copy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">largest_2_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">far2_from_bar_pas</span> <span class="o">=</span> <span class="n">bar_pas</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">far2_from_bar_pas</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">largest_2_values_copy</span>
-    <span class="k">return</span> <span class="n">far2_from_bar_pas</span>
-
-<span class="c1"># return transition probability within specific L1 distance value</span>
-<span class="k">def</span> <span class="nf">get_pas_within_l1_distance</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">act_dim</span><span class="p">,</span> <span class="n">rho_0_s</span><span class="p">,</span> <span class="n">rho_s</span><span class="p">,</span> <span class="n">l1_distance</span><span class="p">,</span> <span class="n">discretize</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">discretized_N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
-    <span class="n">bar_pas</span> <span class="o">=</span> <span class="n">get_bar_pas</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">act_dim</span><span class="p">,</span> <span class="n">rho_0_s</span><span class="p">,</span> <span class="n">rho_s</span><span class="p">,</span> <span class="n">discretize</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">)</span>
-    <span class="n">non_zero_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bar_pas</span> <span class="o">&gt;</span> <span class="mf">0.1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">get_worst_case_pas</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">trans_reduc_types</span><span class="p">,</span> <span class="n">discretized_N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">tilde_pas</span> <span class="o">=</span> <span class="n">get_tilde_pas</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">trans_reduc_types</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+    <span class="n">non_zero_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tilde_pas</span> <span class="o">&gt;</span> <span class="mf">0.01</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">num_non_zero</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">non_zero_idx</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">num_non_zero</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">bar_pas</span>
-    <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span><span class="n">bar_pas</span><span class="p">,</span> <span class="o">-</span><span class="n">num_non_zero</span><span class="p">)[</span><span class="o">-</span><span class="n">num_non_zero</span><span class="p">:]</span>
-    <span class="n">sorted_nonzero_values</span> <span class="o">=</span> <span class="n">bar_pas</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span><span class="n">tilde_pas</span><span class="p">,</span> <span class="o">-</span><span class="n">num_non_zero</span><span class="p">)[</span><span class="o">-</span><span class="n">num_non_zero</span><span class="p">:]</span>
+    <span class="n">sorted_nonzero_values</span> <span class="o">=</span> <span class="n">tilde_pas</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">s0</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">s1</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_non_zero</span><span class="p">):</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">ind</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">s0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">idx</span> <span class="o">/</span> <span class="p">(</span><span class="n">discretized_N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
         <span class="n">s1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx</span> <span class="o">%</span> <span class="p">(</span><span class="n">discretized_N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">largest_s1_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">sorted_nonzero_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">l1_distance</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
-        <span class="n">sorted_nonzero_values</span><span class="p">[</span><span class="n">largest_s1_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">sorted_nonzero_values</span><span class="p">[</span><span class="n">largest_s1_idx</span><span class="p">]</span> <span class="o">+</span> <span class="n">l1_distance</span><span class="o">/</span><span class="mi">2</span>
-        <span class="n">sorted_nonzero_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sorted_nonzero_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">l1_distance</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">worst_case_s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+    <span class="n">worst_case_s0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
+    <span class="n">worst_case_idx</span> <span class="o">=</span> <span class="n">worst_case_s0</span> <span class="o">*</span> <span class="p">(</span><span class="n">discretized_N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">worst_case_s1</span>
+    <span class="n">pas</span> <span class="o">=</span> <span class="n">tilde_pas</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">worst_case_s0</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">worst_case_idx1</span> <span class="o">=</span> <span class="p">(</span><span class="n">worst_case_s0</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">discretized_N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">worst_case_s1</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">pas</span><span class="p">[</span><span class="n">worst_case_idx1</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.5</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">sorted_nonzero_values</span><span class="p">[</span><span class="n">largest_s1_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">sorted_nonzero_values</span><span class="p">[</span><span class="n">largest_s1_idx</span><span class="p">]</span> <span class="o">+</span> <span class="n">sorted_nonzero_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">sorted_nonzero_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">pas</span> <span class="o">=</span> <span class="n">bar_pas</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">pas</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">sorted_nonzero_values</span>
-    <span class="k">return</span> <span class="n">pas</span>
+        <span class="n">pas</span><span class="p">[</span><span class="n">worst_case_idx</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.5</span>
+    <span class="k">return</span> <span class="n">pas</span>  
 
 <span class="k">def</span> <span class="nf">get_ras_coefficients</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">trans_reduc_types</span><span class="p">,</span> <span class="n">cT_multiplier</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">wtp</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> 
                      <span class="n">cost_per_infect</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">qaly_loss_per_infect</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vaccine_price</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vaccine_limit</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
@@ -13791,10 +13804,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[248]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import random</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">niter</span> <span class="o">=</span> <span class="mi">5</span>
@@ -13817,21 +13830,21 @@ div#notebook {
 <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">num_states</span><span class="p">,</span> <span class="n">num_states</span><span class="p">))</span>
 
 <span class="c1"># define initial state</span>
-<span class="n">xs_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="mi">8</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">xs_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="mf">7.5</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">xi_init</span> <span class="o">=</span> <span class="n">N</span> <span class="o">-</span> <span class="n">xs_init</span>
 <span class="n">s_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">xs_init</span><span class="p">,</span> <span class="n">xi_init</span><span class="p">])</span>
 
 <span class="c1"># define reward parameters</span>
 <span class="n">unit</span> <span class="o">=</span> <span class="mi">50000</span>
-<span class="n">cT_multiplier</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="n">unit</span> 
+<span class="n">cT_multiplier</span> <span class="o">=</span> <span class="mi">75</span> <span class="o">*</span> <span class="n">unit</span> 
 <span class="n">wtp</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">unit</span>
 <span class="n">cost_per_infect</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">unit</span>
 <span class="n">qaly_loss_per_infect</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># QALY</span>
 <span class="n">vaccine_price</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">unit</span>
 
 <span class="c1"># define pas paramters </span>
-<span class="n">tau</span> <span class="o">=</span> <span class="mf">0.7</span>
-<span class="n">mu</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">8</span>
 <span class="n">vaccine_limit</span> <span class="o">=</span> <span class="n">N</span><span class="o">/</span><span class="mi">10</span>
 
 <span class="c1"># build heuristic funcion </span>
@@ -13845,9 +13858,6 @@ div#notebook {
         <span class="n">delta_0_s</span><span class="p">,</span> <span class="n">delta_s</span> <span class="o">=</span> <span class="n">get_ras_coefficients</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">cT_multiplier</span><span class="p">,</span> <span class="n">wtp</span><span class="p">,</span> <span class="n">cost_per_infect</span><span class="p">,</span> <span class="n">qaly_loss_per_infect</span><span class="p">,</span> <span class="n">vaccine_price</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">vaccine_limit</span><span class="p">)</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">max_ras</span> <span class="o">=</span> <span class="n">get_fast_max_ras</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">delta_s</span><span class="p">,</span> <span class="n">delta_0_s</span><span class="p">,</span> <span class="n">vaccine_limit</span><span class="p">)</span>
         <span class="n">V0</span><span class="p">[</span><span class="n">current_s_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_ras</span> 
-        
-<span class="c1"># l1 distance paramter </span>
-<span class="n">l1_distance</span> <span class="o">=</span> <span class="mf">2.0</span>
 </pre></div>
 
     </div>
@@ -13858,7 +13868,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.1-Transition-probability-=-bar_pas">3.1 Transition probability = bar_pas<a class="anchor-link" href="#3.1-Transition-probability-=-bar_pas">&#182;</a></h2>
+<h2 id="3.1-Transition-probability-=-bar_tilde_pas">3.1 Transition probability = bar_tilde_pas<a class="anchor-link" href="#3.1-Transition-probability-=-bar_tilde_pas">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -13871,7 +13881,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[271]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_states</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
@@ -13904,12 +13914,8 @@ div#notebook {
         <span class="n">xi_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">a1_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">a2_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="c1"># update reward</span>
-        <span class="n">reward</span> <span class="o">=</span> <span class="n">get_ras</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">delta_s</span><span class="p">,</span> <span class="n">delta_0_s</span><span class="p">)</span>
-        <span class="n">total_reward</span> <span class="o">+=</span> <span class="n">reward</span>
-        <span class="n">stagewise_rewards</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
         <span class="c1"># sample next state </span>
-        <span class="n">pas</span> <span class="o">=</span> <span class="n">get_bar_pas</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">act_dim</span><span class="p">,</span> <span class="n">rho_0_s</span><span class="p">,</span> <span class="n">rho_s</span><span class="p">,</span> <span class="n">discretize</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">)</span>
+        <span class="n">pas</span> <span class="o">=</span> <span class="n">get_tilde_pas</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">discretize</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
         <span class="n">next_s_idx</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_states</span><span class="p">),</span> <span class="n">pas</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">discretize</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">next_s_idx</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
@@ -13920,6 +13926,10 @@ div#notebook {
             <span class="n">xs</span> <span class="o">=</span> <span class="n">s0</span><span class="o">*</span><span class="n">discretize_level</span>
             <span class="n">xi</span> <span class="o">=</span> <span class="n">s1</span><span class="o">*</span><span class="n">discretize_level</span>
         <span class="n">next_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">xi</span><span class="p">])</span>
+        <span class="c1"># compuate reward</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="n">compute_actual_cost</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">next_s</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">cT_multiplier</span><span class="p">,</span> <span class="n">wtp</span><span class="p">,</span> <span class="n">cost_per_infect</span><span class="p">,</span> <span class="n">qaly_loss_per_infect</span><span class="p">,</span> <span class="n">vaccine_price</span><span class="p">)</span>
+        <span class="n">total_reward</span> <span class="o">+=</span> <span class="p">(</span><span class="n">lam</span><span class="o">**</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">reward</span>
+        <span class="n">stagewise_rewards</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">next_s</span>
     <span class="n">xs_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">xi_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -13928,8 +13938,7 @@ div#notebook {
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episode </span><span class="si">%d</span><span class="s1"> ends&#39;</span> <span class="o">%</span><span class="k">i</span>)
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episodes reward&#39;</span><span class="p">,</span> <span class="n">episode_rewards</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average reward&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stagewise average reward&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">stagewise_rewards</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;XS: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xs_table</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;XI: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xi_table</span><span class="p">)</span>
@@ -13945,74 +13954,6 @@ div#notebook {
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Episode 0 begins
-Reward -182390314.30739006
-Episode 0 ends
-Episode 1 begins
-Reward -177099739.6624123
-Episode 1 ends
-Episode 2 begins
-Reward -175861268.4239096
-Episode 2 ends
-Episode 3 begins
-Reward -188053985.65039238
-Episode 3 ends
-Episode 4 begins
-Reward -179193970.76983798
-Episode 4 ends
-Episodes reward [-1.82390314e+08 -1.77099740e+08 -1.75861268e+08 -1.88053986e+08
- -1.79193971e+08]
-Average reward -180519855.76278847
--std -182704109.97737643
-+std -178335601.54820052
-Stagewise average reward [-9.70685925e+07 -6.35532350e+07 -1.84644893e+07 -1.43353898e+06
- -4.65661287e-09 -4.65661287e-09 -4.65661287e-09 -4.65661287e-09
- -4.65661287e-09 -4.65661287e-09 -4.65661287e-09]
-XS: 
- [[800. 450. 200.  60.   0.   0.   0.   0.   0.   0.   0.   0.]
- [800. 430. 170.  30.   0.   0.   0.   0.   0.   0.   0.   0.]
- [800. 430. 160.  30.   0.   0.   0.   0.   0.   0.   0.   0.]
- [800. 420. 210.  70.   0.   0.   0.   0.   0.   0.   0.   0.]
- [800. 440. 180.  40.   0.   0.   0.   0.   0.   0.   0.   0.]]
-XI: 
- [[200. 250. 150.  40.   0.   0.   0.   0.   0.   0.   0.   0.]
- [200. 270. 160.  40.   0.   0.   0.   0.   0.   0.   0.   0.]
- [200. 270. 170.  30.   0.   0.   0.   0.   0.   0.   0.   0.]
- [200. 280. 210.  40.   0.   0.   0.   0.   0.   0.   0.   0.]
- [200. 260. 160.  40.   0.   0.   0.   0.   0.   0.   0.   0.]]
-A1: 
- [[100. 100. 100.  60.   0.   0.   0.   0.   0.   0.  -0.]
- [100. 100. 100.  30.   0.   0.   0.   0.   0.   0.  -0.]
- [100. 100. 100.  30.   0.   0.   0.   0.   0.   0.  -0.]
- [100. 100. 100.  70.   0.   0.   0.   0.   0.   0.  -0.]
- [100. 100. 100.  40.   0.   0.   0.   0.   0.   0.  -0.]]
-A2: 
- [[ 5.  5. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5.  5. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5.  5. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5.  5. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5.  5. -0. -0. -0. -0. -0. -0. -0. -0. -0.]]
-Average xs [800. 434. 184.  46.   0.   0.   0.   0.   0.   0.   0.   0.]
-Average xi [200. 266. 170.  38.   0.   0.   0.   0.   0.   0.   0.   0.]
-Average a1 [100. 100. 100.  46.   0.   0.   0.   0.   0.   0.   0.]
-Average a2 [5. 5. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14023,7 +13964,7 @@ Average a2 [5. 5. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[276]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_states</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
@@ -14056,12 +13997,8 @@ Average a2 [5. 5. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
         <span class="n">xi_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">a1_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">a2_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="c1"># update reward</span>
-        <span class="n">reward</span> <span class="o">=</span> <span class="n">get_ras</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">delta_s</span><span class="p">,</span> <span class="n">delta_0_s</span><span class="p">)</span>
-        <span class="n">total_reward</span> <span class="o">+=</span> <span class="n">reward</span>
-        <span class="n">stagewise_rewards</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
         <span class="c1"># sample next state </span>
-        <span class="n">pas</span> <span class="o">=</span> <span class="n">get_bar_pas</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">act_dim</span><span class="p">,</span> <span class="n">rho_0_s</span><span class="p">,</span> <span class="n">rho_s</span><span class="p">,</span> <span class="n">discretize</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">)</span>
+        <span class="n">pas</span> <span class="o">=</span> <span class="n">get_tilde_pas</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">discretize</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
         <span class="n">next_s_idx</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_states</span><span class="p">),</span> <span class="n">pas</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">discretize</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">next_s_idx</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
@@ -14072,6 +14009,10 @@ Average a2 [5. 5. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
             <span class="n">xs</span> <span class="o">=</span> <span class="n">s0</span><span class="o">*</span><span class="n">discretize_level</span>
             <span class="n">xi</span> <span class="o">=</span> <span class="n">s1</span><span class="o">*</span><span class="n">discretize_level</span>
         <span class="n">next_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">xi</span><span class="p">])</span>
+        <span class="c1"># compute reward</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="n">compute_actual_cost</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">next_s</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">cT_multiplier</span><span class="p">,</span> <span class="n">wtp</span><span class="p">,</span> <span class="n">cost_per_infect</span><span class="p">,</span> <span class="n">qaly_loss_per_infect</span><span class="p">,</span> <span class="n">vaccine_price</span><span class="p">)</span>
+        <span class="n">total_reward</span> <span class="o">+=</span>  <span class="p">(</span><span class="n">lam</span><span class="o">**</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">reward</span>
+        <span class="n">stagewise_rewards</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">next_s</span>
     <span class="n">xs_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">xi_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -14080,8 +14021,7 @@ Average a2 [5. 5. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episode </span><span class="si">%d</span><span class="s1"> ends&#39;</span> <span class="o">%</span><span class="k">i</span>)
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episodes reward&#39;</span><span class="p">,</span> <span class="n">episode_rewards</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average reward&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stagewise average reward&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">stagewise_rewards</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;XS: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xs_table</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;XI: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xi_table</span><span class="p">)</span>
@@ -14094,74 +14034,6 @@ Average a2 [5. 5. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Episode 0 begins
-Reward -179258814.0670943
-Episode 0 ends
-Episode 1 begins
-Reward -177991234.92116708
-Episode 1 ends
-Episode 2 begins
-Reward -176151209.26560622
-Episode 2 ends
-Episode 3 begins
-Reward -177991234.92116708
-Episode 3 ends
-Episode 4 begins
-Reward -179258814.0670943
-Episode 4 ends
-Episodes reward [-1.79258814e+08 -1.77991235e+08 -1.76151209e+08 -1.77991235e+08
- -1.79258814e+08]
-Average reward -178130261.4484258
--std -178700461.69040632
-+std -177560061.20644528
-Stagewise average reward [-9.70685925e+07 -7.71435382e+07 -3.91813069e+06 -4.65661287e-09
- -4.65661287e-09 -4.65661287e-09 -4.65661287e-09 -4.65661287e-09
- -4.65661287e-09 -4.65661287e-09 -4.65661287e-09]
-XS: 
- [[800. 440. 100.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
- [800. 430.  90.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
- [800. 420.  70.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
- [800. 430.  90.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
- [800. 440. 100.   0.   0.   0.   0.   0.   0.   0.   0.   0.]]
-XI: 
- [[200. 260. 240.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
- [200. 270. 240.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
- [200. 280. 250.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
- [200. 270. 240.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
- [200. 260. 240.   0.   0.   0.   0.   0.   0.   0.   0.   0.]]
-A1: 
- [[100. 100. 100.  -0.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100.  90.  -0.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100.  70.  -0.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100.  90.  -0.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100. 100.  -0.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]]
-A2: 
- [[ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]]
-Average xs [800. 432.  90.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
-Average xi [200. 268. 242.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
-Average a1 [100. 100.  90.   0.   0.   0.   0.   0.   0.   0.   0.]
-Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -14182,7 +14054,7 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[261]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_states</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
@@ -14215,12 +14087,8 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
         <span class="n">xi_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">a1_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">a2_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="c1"># update reward</span>
-        <span class="n">reward</span> <span class="o">=</span> <span class="n">get_ras</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">delta_s</span><span class="p">,</span> <span class="n">delta_0_s</span><span class="p">)</span>
-        <span class="n">total_reward</span> <span class="o">+=</span> <span class="n">reward</span>
-        <span class="n">stagewise_rewards</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
         <span class="c1"># sample next state</span>
-        <span class="n">pas</span> <span class="o">=</span> <span class="n">get_pas_within_l1_distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">act_dim</span><span class="p">,</span> <span class="n">rho_0_s</span><span class="p">,</span> <span class="n">rho_s</span><span class="p">,</span> <span class="n">l1_distance</span><span class="p">,</span> <span class="n">discretize</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">)</span>
+        <span class="n">pas</span> <span class="o">=</span> <span class="n">get_worst_case_pas</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
         <span class="n">next_s_idx</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_states</span><span class="p">),</span> <span class="n">pas</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">discretize</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">next_s_idx</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
@@ -14231,6 +14099,10 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
             <span class="n">xs</span> <span class="o">=</span> <span class="n">s0</span><span class="o">*</span><span class="n">discretize_level</span>
             <span class="n">xi</span> <span class="o">=</span> <span class="n">s1</span><span class="o">*</span><span class="n">discretize_level</span>
         <span class="n">next_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">xi</span><span class="p">])</span>
+        <span class="c1"># compute reward</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="n">compute_actual_cost</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">next_s</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">cT_multiplier</span><span class="p">,</span> <span class="n">wtp</span><span class="p">,</span> <span class="n">cost_per_infect</span><span class="p">,</span> <span class="n">qaly_loss_per_infect</span><span class="p">,</span> <span class="n">vaccine_price</span><span class="p">)</span>
+        <span class="n">total_reward</span> <span class="o">+=</span> <span class="p">(</span><span class="n">lam</span><span class="o">**</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">reward</span>
+        <span class="n">stagewise_rewards</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">next_s</span>
     <span class="n">xs_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">xi_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -14239,8 +14111,7 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episode </span><span class="si">%d</span><span class="s1"> ends&#39;</span> <span class="o">%</span><span class="k">i</span>)
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episodes reward&#39;</span><span class="p">,</span> <span class="n">episode_rewards</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average reward&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stagewise average reward&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">stagewise_rewards</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;XS: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xs_table</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;XI: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xi_table</span><span class="p">)</span>
@@ -14256,74 +14127,6 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Episode 0 begins
-Reward -165947049.49237457
-Episode 0 ends
-Episode 1 begins
-Reward -195156292.89682317
-Episode 1 ends
-Episode 2 begins
-Reward -193382156.49953273
-Episode 2 ends
-Episode 3 begins
-Reward -179253571.2241332
-Episode 3 ends
-Episode 4 begins
-Reward -199235530.9479308
-Episode 4 ends
-Episodes reward [-1.65947049e+08 -1.95156293e+08 -1.93382156e+08 -1.79253571e+08
- -1.99235531e+08]
-Average reward -186594920.21215886
--std -192756813.94973898
-+std -180433026.47457874
-Stagewise average reward [-9.70685925e+07 -7.48890155e+07 -1.25486348e+07 -1.54322098e+06
- -5.45456473e+05 -3.72529030e-10 -3.72529030e-10 -3.72529030e-10
- -3.72529030e-10 -3.72529030e-10 -3.72529030e-10]
-XS: 
- [[800. 440.  90.  30.  20.  20.  20.  20.  20.  20.  20.  20.]
- [800. 480. 170.  50.  30.  30.  30.  30.  30.  30.  30.  30.]
- [800. 470. 160.  60.  40.  40.  40.  40.  40.  40.  40.  40.]
- [800. 490.  80.  20.  10.  10.  10.  10.  10.  10.  10.  10.]
- [800. 500. 190.  60.  50.  50.  50.  50.  50.  50.  50.  50.]]
-XI: 
- [[200. 260. 250.  60.  10.   0.   0.   0.   0.   0.   0.   0.]
- [200. 320. 210. 120.  20.   0.   0.   0.   0.   0.   0.   0.]
- [200. 330. 210. 100.  20.   0.   0.   0.   0.   0.   0.   0.]
- [200. 310. 310.  60.  10.   0.   0.   0.   0.   0.   0.   0.]
- [200. 300. 210.  30.  10.   0.   0.   0.   0.   0.   0.   0.]]
-A1: 
- [[100. 100.  90.  30.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100. 100.  50.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100. 100.  60.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100.  80.  20.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100. 100.  60.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]]
-A2: 
- [[ 5.  5. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5.  5. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5.  5. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5.  5. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5.  5. -0. -0. -0. -0. -0. -0. -0. -0. -0.]]
-Average xs [800. 476. 138.  44.  30.  30.  30.  30.  30.  30.  30.  30.]
-Average xi [200. 304. 238.  74.  14.   0.   0.   0.   0.   0.   0.   0.]
-Average a1 [100. 100.  94.  44.   0.   0.   0.   0.   0.   0.   0.]
-Average a2 [5. 5. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14334,7 +14137,7 @@ Average a2 [5. 5. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[265]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_states</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
@@ -14367,12 +14170,8 @@ Average a2 [5. 5. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
         <span class="n">xi_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">a1_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">a2_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="c1"># update reward</span>
-        <span class="n">reward</span> <span class="o">=</span> <span class="n">get_ras</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">delta_s</span><span class="p">,</span> <span class="n">delta_0_s</span><span class="p">)</span>
-        <span class="n">total_reward</span> <span class="o">+=</span> <span class="n">reward</span>
-        <span class="n">stagewise_rewards</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
         <span class="c1"># sample next state </span>
-        <span class="n">pas</span> <span class="o">=</span> <span class="n">get_pas_within_l1_distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">act_dim</span><span class="p">,</span> <span class="n">rho_0_s</span><span class="p">,</span> <span class="n">rho_s</span><span class="p">,</span> <span class="n">l1_distance</span><span class="p">,</span> <span class="n">discretize</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">)</span>
+        <span class="n">pas</span> <span class="o">=</span> <span class="n">get_worst_case_pas</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
         <span class="n">next_s_idx</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_states</span><span class="p">),</span> <span class="n">pas</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">discretize</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">next_s_idx</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
@@ -14383,6 +14182,10 @@ Average a2 [5. 5. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
             <span class="n">xs</span> <span class="o">=</span> <span class="n">s0</span><span class="o">*</span><span class="n">discretize_level</span>
             <span class="n">xi</span> <span class="o">=</span> <span class="n">s1</span><span class="o">*</span><span class="n">discretize_level</span>
         <span class="n">next_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">xi</span><span class="p">])</span>
+        <span class="c1"># compuate reward</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="n">compute_actual_cost</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">next_s</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">cT_multiplier</span><span class="p">,</span> <span class="n">wtp</span><span class="p">,</span> <span class="n">cost_per_infect</span><span class="p">,</span> <span class="n">qaly_loss_per_infect</span><span class="p">,</span> <span class="n">vaccine_price</span><span class="p">)</span>
+        <span class="n">total_reward</span> <span class="o">+=</span> <span class="p">(</span><span class="n">lam</span><span class="o">**</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">reward</span>
+        <span class="n">stagewise_rewards</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">next_s</span>
     <span class="n">xs_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">xi_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -14391,8 +14194,7 @@ Average a2 [5. 5. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episode </span><span class="si">%d</span><span class="s1"> ends&#39;</span> <span class="o">%</span><span class="k">i</span>)
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episodes reward&#39;</span><span class="p">,</span> <span class="n">episode_rewards</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average reward&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stagewise average reward&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">stagewise_rewards</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;XS: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xs_table</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;XI: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xi_table</span><span class="p">)</span>
@@ -14408,74 +14210,6 @@ Average a2 [5. 5. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Episode 0 begins
-Reward -182012227.19035977
-Episode 0 ends
-Episode 1 begins
-Reward -178366668.81841645
-Episode 1 ends
-Episode 2 begins
-Reward -200509701.70502225
-Episode 2 ends
-Episode 3 begins
-Reward -200509701.70502225
-Episode 3 ends
-Episode 4 begins
-Reward -195060421.22345385
-Episode 4 ends
-Episodes reward [-1.82012227e+08 -1.78366669e+08 -2.00509702e+08 -2.00509702e+08
- -1.95060421e+08]
-Average reward -191291744.1284549
--std -195967807.73574105
-+std -186615680.52116874
-Stagewise average reward [-9.70685925e+07 -8.83248171e+07 -5.32454515e+06 -4.98342828e+05
- -7.54465149e+04 -2.42143869e-09 -2.42143869e-09 -2.42143869e-09
- -2.42143869e-09 -2.42143869e-09 -2.42143869e-09]
-XS: 
- [[800. 450. 110.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
- [800. 430.  80.  20.  10.  10.  10.  10.  10.  10.  10.  10.]
- [800. 490. 110.  20.  10.  10.  10.  10.  10.  10.  10.  10.]
- [800. 490. 110.  20.  10.  10.  10.  10.  10.  10.  10.  10.]
- [800. 480.  70.  10.   0.   0.   0.   0.   0.   0.   0.   0.]]
-XI: 
- [[200. 250. 240.  10.   0.   0.   0.   0.   0.   0.   0.   0.]
- [200. 270. 250.  60.  10.   0.   0.   0.   0.   0.   0.   0.]
- [200. 310. 380.  90.  10.   0.   0.   0.   0.   0.   0.   0.]
- [200. 310. 380.  90.  10.   0.   0.   0.   0.   0.   0.   0.]
- [200. 320. 310.  60.   0.   0.   0.   0.   0.   0.   0.   0.]]
-A1: 
- [[100. 100. 100.  -0.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100.  80.  20.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100. 100.  20.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100. 100.  20.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100.  70.  10.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]]
-A2: 
- [[ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]]
-Average xs [800. 468.  96.  14.   6.   6.   6.   6.   6.   6.   6.   6.]
-Average xi [200. 292. 312.  62.   6.   0.   0.   0.   0.   0.   0.   0.]
-Average a1 [100. 100.  90.  14.   0.   0.   0.   0.   0.   0.   0.]
-Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14486,7 +14220,41 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_worst_case_pas_small_scale</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">trans_reduc_types</span><span class="p">,</span> <span class="n">discretized_N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">tilde_pas</span> <span class="o">=</span> <span class="n">get_tilde_pas</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">population_size</span><span class="p">,</span> <span class="n">trans_reduc_types</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+    <span class="n">non_zero_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tilde_pas</span> <span class="o">&gt;</span> <span class="mf">0.01</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">num_non_zero</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">non_zero_idx</span><span class="p">)</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span><span class="n">tilde_pas</span><span class="p">,</span> <span class="o">-</span><span class="n">num_non_zero</span><span class="p">)[</span><span class="o">-</span><span class="n">num_non_zero</span><span class="p">:]</span>
+    <span class="n">sorted_nonzero_values</span> <span class="o">=</span> <span class="n">tilde_pas</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">s0</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_non_zero</span><span class="p">):</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">ind</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">s0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">idx</span> <span class="o">/</span> <span class="p">(</span><span class="n">discretized_N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="n">s1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx</span> <span class="o">%</span> <span class="p">(</span><span class="n">discretized_N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">worst_case_s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+    <span class="n">worst_case_s0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
+    <span class="n">worst_case_idx</span> <span class="o">=</span> <span class="n">worst_case_s0</span> <span class="o">*</span> <span class="p">(</span><span class="n">discretized_N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">worst_case_s1</span>
+    <span class="n">pas</span> <span class="o">=</span> <span class="n">tilde_pas</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">worst_case_s0</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">worst_case_idx1</span> <span class="o">=</span> <span class="p">(</span><span class="n">worst_case_s0</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">discretized_N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">worst_case_s1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">pas</span><span class="p">[</span><span class="n">worst_case_idx1</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.5</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pas</span><span class="p">[</span><span class="n">worst_case_idx</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.5</span>
+    <span class="k">return</span> <span class="n">pas</span>  
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[86]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
@@ -14519,15 +14287,16 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 
 <span class="c1"># define reward parameters </span>
 <span class="n">unit</span> <span class="o">=</span> <span class="mi">50000</span>
-<span class="n">cT_multiplier</span> <span class="o">=</span> <span class="n">N</span><span class="o">/</span><span class="mi">20</span> <span class="o">*</span> <span class="n">unit</span>
-<span class="n">wtp</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">unit</span>
-<span class="n">cost_per_infect</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">unit</span> 
-<span class="n">qaly_loss_per_infect</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">cT_multiplier</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">*</span> <span class="n">unit</span>
+<span class="n">wtp</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">unit</span>
+<span class="n">cost_per_infect</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">unit</span> 
+<span class="n">qaly_loss_per_infect</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">vaccine_price</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">unit</span>
 
+
 <span class="c1"># define pas paramters </span>
-<span class="n">tau</span> <span class="o">=</span> <span class="mf">0.7</span>
-<span class="n">mu</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">8</span>
 
 <span class="n">vaccine_limit</span> <span class="o">=</span> <span class="n">N</span><span class="o">/</span><span class="mi">10</span>
 
@@ -14562,13 +14331,10 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[90]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">l1_distance</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">formatter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;float&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{0:0.1f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)})</span>
-
-<span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_states</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_states</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
 <span class="n">xs_table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">niter</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
 <span class="n">xi_table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">niter</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
 <span class="n">a1_table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">niter</span><span class="p">,</span> <span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
@@ -14576,6 +14342,7 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">V</span><span class="p">[:,</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">V0</span>
 <span class="n">episode_rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">niter</span><span class="p">)</span>
+<span class="n">stagewise_rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">niter</span><span class="p">,</span> <span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">niter</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episode </span><span class="si">%d</span><span class="s1"> begins&#39;</span> <span class="o">%</span><span class="k">i</span>)
     <span class="n">total_reward</span> <span class="o">=</span> <span class="mi">0</span> 
@@ -14597,10 +14364,9 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
         <span class="n">xi_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">a1_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">a2_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="c1"># update reward</span>
-        <span class="n">total_reward</span> <span class="o">+=</span> <span class="n">get_ras</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">delta_s</span><span class="p">,</span> <span class="n">delta_0_s</span><span class="p">)</span>
-        <span class="c1"># sample next state </span>
-        <span class="n">pas</span> <span class="o">=</span> <span class="n">get_pas_within_l1_distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">act_dim</span><span class="p">,</span> <span class="n">rho_0_s</span><span class="p">,</span> <span class="n">rho_s</span><span class="p">,</span> <span class="n">l1_distance</span><span class="p">,</span> <span class="n">discretize</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">)</span>
+        <span class="c1"># sample next state</span>
+        <span class="c1"># pas = get_tilde_pas(s, a, N, M, discretize, discretized_N, tau, mu)</span>
+        <span class="n">pas</span> <span class="o">=</span> <span class="n">get_worst_case_pas_small_scale</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
         <span class="n">next_s_idx</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_states</span><span class="p">),</span> <span class="n">pas</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">discretize</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">next_s_idx</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
@@ -14611,6 +14377,10 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
             <span class="n">xs</span> <span class="o">=</span> <span class="n">s0</span><span class="o">*</span><span class="n">discretize_level</span>
             <span class="n">xi</span> <span class="o">=</span> <span class="n">s1</span><span class="o">*</span><span class="n">discretize_level</span>
         <span class="n">next_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">xi</span><span class="p">])</span>
+        <span class="c1"># compute reward</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="n">compute_actual_cost</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">next_s</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">cT_multiplier</span><span class="p">,</span> <span class="n">wtp</span><span class="p">,</span> <span class="n">cost_per_infect</span><span class="p">,</span> <span class="n">qaly_loss_per_infect</span><span class="p">,</span> <span class="n">vaccine_price</span><span class="p">)</span>
+        <span class="n">total_reward</span> <span class="o">+=</span> <span class="p">(</span><span class="n">lam</span><span class="o">**</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">reward</span>
+        <span class="n">stagewise_rewards</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">next_s</span>
     <span class="n">xs_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">xi_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -14619,8 +14389,8 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episode </span><span class="si">%d</span><span class="s1"> ends&#39;</span> <span class="o">%</span><span class="k">i</span>)
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episodes reward&#39;</span><span class="p">,</span> <span class="n">episode_rewards</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average reward&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stagewise average reward&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">stagewise_rewards</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;XS: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xs_table</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;XI: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xi_table</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A1: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">a1_table</span><span class="p">)</span>
@@ -14635,6 +14405,71 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Episode 0 begins
+Reward -27200000.0
+Episode 0 ends
+Episode 1 begins
+Reward -27200000.0
+Episode 1 ends
+Episode 2 begins
+Reward -27200000.0
+Episode 2 ends
+Episode 3 begins
+Reward -27200000.0
+Episode 3 ends
+Episode 4 begins
+Reward -27200000.0
+Episode 4 ends
+Episodes reward [-27200000. -27200000. -27200000. -27200000. -27200000.]
+Average reward -27200000.0
+std 0.0
+Stagewise average reward [-26750000.   -500000.         0.         0.         0.         0.
+         0.         0.         0.         0.         0.]
+XS: 
+ [[140.  25.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
+ [140.  25.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
+ [140.  25.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
+ [140.  25.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
+ [140.  25.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]]
+XI: 
+ [[60. 75.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [60. 75.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [60. 75.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [60. 75.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [60. 75.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]]
+A1: 
+ [[20. 20.  0.  0.  0.  0.  0.  0.  0.  0. -0.]
+ [20. 20.  0.  0.  0.  0.  0.  0.  0.  0. -0.]
+ [20. 20.  0.  0.  0.  0.  0.  0.  0.  0. -0.]
+ [20. 20.  0.  0.  0.  0.  0.  0.  0.  0. -0.]
+ [20. 20.  0.  0.  0.  0.  0.  0.  0.  0. -0.]]
+A2: 
+ [[ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
+ [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
+ [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
+ [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
+ [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]]
+Average xs [140.  25.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
+Average xi [60. 75.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+Average a1 [20. 20.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14645,7 +14480,7 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[88]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_states</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
@@ -14656,6 +14491,7 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">V</span><span class="p">[:,</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">V0</span>
 <span class="n">episode_rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">niter</span><span class="p">)</span>
+<span class="n">stagewise_rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">niter</span><span class="p">,</span> <span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">niter</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episode </span><span class="si">%d</span><span class="s1"> begins&#39;</span> <span class="o">%</span><span class="k">i</span>)
     <span class="n">total_reward</span> <span class="o">=</span> <span class="mi">0</span> 
@@ -14678,10 +14514,9 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
         <span class="n">xi_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">a1_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">a2_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="c1"># update reward</span>
-        <span class="n">total_reward</span> <span class="o">+=</span> <span class="n">get_ras</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">delta_s</span><span class="p">,</span> <span class="n">delta_0_s</span><span class="p">)</span>
-        <span class="c1"># sample next state </span>
-        <span class="n">pas</span> <span class="o">=</span> <span class="n">get_pas_within_l1_distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">act_dim</span><span class="p">,</span> <span class="n">rho_0_s</span><span class="p">,</span> <span class="n">rho_s</span><span class="p">,</span> <span class="n">l1_distance</span><span class="p">,</span> <span class="n">discretize</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">)</span>
+        <span class="c1"># sample next state</span>
+        <span class="c1"># pas = get_tilde_pas(s, a, N, M, discretize, discretized_N, tau, mu)</span>
+        <span class="n">pas</span> <span class="o">=</span> <span class="n">get_worst_case_pas_small_scale</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">discretized_N</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
         <span class="n">next_s_idx</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_states</span><span class="p">),</span> <span class="n">pas</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">discretize</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">next_s_idx</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
@@ -14692,6 +14527,10 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
             <span class="n">xs</span> <span class="o">=</span> <span class="n">s0</span><span class="o">*</span><span class="n">discretize_level</span>
             <span class="n">xi</span> <span class="o">=</span> <span class="n">s1</span><span class="o">*</span><span class="n">discretize_level</span>
         <span class="n">next_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">xi</span><span class="p">])</span>
+        <span class="c1"># compute reward</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="n">compute_actual_cost</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">next_s</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">cT_multiplier</span><span class="p">,</span> <span class="n">wtp</span><span class="p">,</span> <span class="n">cost_per_infect</span><span class="p">,</span> <span class="n">qaly_loss_per_infect</span><span class="p">,</span> <span class="n">vaccine_price</span><span class="p">)</span>
+        <span class="n">total_reward</span> <span class="o">+=</span> <span class="p">(</span><span class="n">lam</span><span class="o">**</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">reward</span>
+        <span class="n">stagewise_rewards</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">next_s</span>
     <span class="n">xs_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">xi_table</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -14700,8 +14539,8 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episode </span><span class="si">%d</span><span class="s1"> ends&#39;</span> <span class="o">%</span><span class="k">i</span>)
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Episodes reward&#39;</span><span class="p">,</span> <span class="n">episode_rewards</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average reward&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stagewise average reward&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">stagewise_rewards</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;XS: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xs_table</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;XI: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xi_table</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A1: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">a1_table</span><span class="p">)</span>
@@ -14713,6 +14552,71 @@ Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Episode 0 begins
+Reward -27200000.0
+Episode 0 ends
+Episode 1 begins
+Reward -27200000.0
+Episode 1 ends
+Episode 2 begins
+Reward -27200000.0
+Episode 2 ends
+Episode 3 begins
+Reward -27200000.0
+Episode 3 ends
+Episode 4 begins
+Reward -27200000.0
+Episode 4 ends
+Episodes reward [-27200000. -27200000. -27200000. -27200000. -27200000.]
+Average reward -27200000.0
+std 0.0
+Stagewise average reward [-26750000.   -500000.         0.         0.         0.         0.
+         0.         0.         0.         0.         0.]
+XS: 
+ [[140.  25.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
+ [140.  25.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
+ [140.  25.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
+ [140.  25.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
+ [140.  25.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]]
+XI: 
+ [[60. 75.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [60. 75.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [60. 75.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [60. 75.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [60. 75.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]]
+A1: 
+ [[20. 20.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [20. 20.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [20. 20.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [20. 20.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [20. 20.  0.  0.  0.  0.  0.  0.  0.  0.  0.]]
+A2: 
+ [[ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
+ [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
+ [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
+ [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
+ [ 5. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]]
+Average xs [140.  25.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
+Average xi [60. 75.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+Average a1 [20. 20.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+Average a2 [5. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
