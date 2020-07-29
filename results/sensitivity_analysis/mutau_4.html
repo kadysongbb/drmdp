@@ -13129,7 +13129,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
@@ -13224,7 +13224,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
@@ -13415,7 +13415,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
@@ -13549,7 +13549,7 @@ Academic license - for non-commercial use only
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -13804,13 +13804,13 @@ Academic license - for non-commercial use only
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[158]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">niter</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">niter</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">T</span> <span class="o">=</span> <span class="mi">12</span> <span class="c1"># time horizon</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># population size</span>
 <span class="n">discretized_N</span> <span class="o">=</span> <span class="mi">100</span>
@@ -13836,16 +13836,16 @@ Academic license - for non-commercial use only
 
 <span class="c1"># define reward parameters</span>
 <span class="n">unit</span> <span class="o">=</span> <span class="mi">50000</span>
-<span class="n">cT_multiplier</span> <span class="o">=</span> <span class="mi">75</span> <span class="o">*</span> <span class="n">unit</span> 
-<span class="n">wtp</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">unit</span>
-<span class="n">cost_per_infect</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">unit</span>
-<span class="n">qaly_loss_per_infect</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># QALY</span>
-<span class="n">vaccine_price</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">unit</span>
+<span class="n">cT_multiplier</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">unit</span> 
+<span class="n">wtp</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">unit</span>
+<span class="n">cost_per_infect</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">unit</span>
+<span class="n">qaly_loss_per_infect</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># QALY</span>
+<span class="n">vaccine_price</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">unit</span>
 
 <span class="c1"># define pas paramters </span>
 <span class="n">tau</span> <span class="o">=</span> <span class="mf">0.8</span>
 <span class="n">mu</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">vaccine_limit</span> <span class="o">=</span> <span class="n">N</span><span class="o">/</span><span class="mi">10</span>
+<span class="n">vaccine_limit</span> <span class="o">=</span> <span class="mi">100</span>
 
 <span class="c1"># build heuristic funcion </span>
 <span class="n">V0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_states</span><span class="p">)</span>
@@ -13881,7 +13881,7 @@ Academic license - for non-commercial use only
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[159]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_states</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
@@ -13965,54 +13965,45 @@ Academic license - for non-commercial use only
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Episode 0 begins
-Reward -151533550.0
+Reward -73480000.0
 Episode 0 ends
 Episode 1 begins
-Reward -149916550.0
+Reward -72390000.0
 Episode 1 ends
 Episode 2 begins
-Reward -150143320.0
+Reward -72649000.0
 Episode 2 ends
-Episode 3 begins
-Reward -156933550.0
-Episode 3 ends
-Episode 4 begins
-Reward -153963550.0
-Episode 4 ends
-Episodes reward [-1.5153355e+08 -1.4991655e+08 -1.5014332e+08 -1.5693355e+08
- -1.5396355e+08]
-Average reward -152498104.0
-std 1322129.085194029
-Stagewise average reward [-57850000. -51850000. -38650000. -16900000.  -6100000.   -600000.
-         0.         0.         0.         0.         0.]
+Episodes reward [-73480000. -72390000. -72649000.]
+Average reward -72839666.66666667
+std 232483.0937700393
+Stagewise average reward [-29666666.66666667 -39000000.          -9666666.66666667
+   -333333.33333333         0.                 0.
+         0.                 0.                 0.
+         0.                 0.        ]
 XS: 
- [[900. 680. 480. 320. 170.  60.  60.  60.  60.  60.  60.  60.]
- [900. 670. 470. 320. 180.  70.  70.  70.  70.  70.  70.  70.]
- [900. 680. 490. 340. 190.  70.  60.  60.  60.  60.  60.  60.]
- [900. 680. 460. 300. 150.  40.  40.  40.  40.  40.  40.  40.]
- [900. 680. 480. 310. 160.  50.  50.  50.  50.  50.  50.  50.]]
+ [[900. 590. 140.  10.  10.  10.  10.  10.  10.  10.  10.  10.]
+ [900. 600. 160.  20.  20.  20.  20.  20.  20.  20.  20.  20.]
+ [900. 620. 190.  20.  10.  10.  10.  10.  10.  10.  10.  10.]]
 XI: 
- [[100. 120. 100.  60.  50.  10.   0.   0.   0.   0.   0.   0.]
- [100. 130. 100.  50.  40.  10.   0.   0.   0.   0.   0.   0.]
- [100. 120.  90.  50.  50.  20.  10.   0.   0.   0.   0.   0.]
- [100. 120. 120.  60.  50.  10.   0.   0.   0.   0.   0.   0.]
- [100. 120. 100.  70.  50.  10.   0.   0.   0.   0.   0.   0.]]
+ [[100. 310. 350.  30.   0.   0.   0.   0.   0.   0.   0.   0.]
+ [100. 300. 340.  40.   0.   0.   0.   0.   0.   0.   0.   0.]
+ [100. 280. 330.  70.  10.   0.   0.   0.   0.   0.   0.   0.]]
 A1: 
- [[100. 100. 100. 100. 100.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100. 100. 100. 100.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100. 100. 100. 100.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100. 100. 100. 100.  -0.  -0.  -0.  -0.  -0.  -0.]
- [100. 100. 100. 100. 100.  -0.  -0.  -0.  -0.  -0.  -0.]]
+ [[ -0. 100. 100.  -0.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
+ [ -0. 100. 100.  -0.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]
+ [ -0. 100. 100.  -0.  -0.  -0.  -0.  -0.  -0.  -0.  -0.]]
 A2: 
- [[ 5.  5.  5. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5.  5.  5. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5.  5.  5. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5.  5.  5. -0. -0. -0. -0. -0. -0. -0. -0.]
- [ 5.  5.  5. -0. -0. -0. -0. -0. -0. -0. -0.]]
-Average xs [900. 678. 476. 318. 170.  58.  56.  56.  56.  56.  56.  56.]
-Average xi [100. 122. 102.  58.  48.  12.   2.   0.   0.   0.   0.   0.]
-Average a1 [100. 100. 100. 100. 100.   0.   0.   0.   0.   0.   0.]
-Average a2 [5. 5. 5. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [[-0. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
+ [-0. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]
+ [-0. -0. -0. -0. -0. -0. -0. -0. -0. -0. -0.]]
+Average xs [900.         603.33333333 163.33333333  16.66666667  13.33333333
+  13.33333333  13.33333333  13.33333333  13.33333333  13.33333333
+  13.33333333  13.33333333]
+Average xi [100.         296.66666667 340.          46.66666667   3.33333333
+   0.           0.           0.           0.           0.
+   0.           0.        ]
+Average a1 [  0. 100. 100.   0.   0.   0.   0.   0.   0.   0.   0.]
+Average a2 [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 </pre>
 </div>
 </div>
